@@ -7,6 +7,7 @@ import jenkins
 import requests
 from jira import JIRA
 
+
 app = Flask(__name__)
 
 @app.route('/gitlab',methods=['POST'])
