@@ -47,10 +47,12 @@ def foo():
              f"Branch: {branchName}\n") 
    elif data['object_kind'] == 'merge_request':
       print("TOPTOP")
-      API_token = 'MjE4MTY5NjY3NDQyOi+9u8UDE6TaTjCHGl3otxLiVi2Y'
+      API_token = 'OTUwNjA0MDUyNjgxOl7cmORGLvsRpUyI2S7Cj4e5DcJE'
       username = 'svukelic'
       jira = JIRA('http://192.168.10.200:8086/', token_auth=('API_token'))
-      new_issue = jira.create_issue(project='TES', summary='New issue from jira-python', description='Look into this one', issuetype={'name': 'Task'})
+      projects = jira.projects()
+      print (projects)
+      #new_issue = jira.create_issue(project='testjira', summary='New issue from jira-python', description='Look into this one', issuetype={'name': 'Task'})
    return "OK"
 
 
