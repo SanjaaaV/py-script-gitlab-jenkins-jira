@@ -49,10 +49,10 @@ def foo():
       print("TOPTOP")
       API_token = 'OTUwNjA0MDUyNjgxOl7cmORGLvsRpUyI2S7Cj4e5DcJE'
       username = 'svukelic'
-      jira = JIRA('http://192.168.10.200:8086/', token_auth=('API_token'))
+      jira = JIRA('http://192.168.10.200:8086/', token_auth=(API_token))
       projects = jira.projects()
       print (projects)
-      #new_issue = jira.create_issue(project='testjira', summary='New issue from jira-python', description='Look into this one', issuetype={'name': 'Task'})
+      new_issue = jira.create_issue(project='TES', summary='New issue from jira-python', description='Look into this one', issuetype={'name': 'Task'})
    return "OK"
 
 
