@@ -11,6 +11,7 @@ config = ConfigParser()
 config.read("parametersweb.ini")
 
 
+
 app = Flask(__name__)
 
 @app.route('/gitlab',methods=['POST'])
@@ -59,8 +60,7 @@ def foo():
       hostJira = config_data2['hostjira']
       API_token_jira = config_data2['api_token_jira']
       jira = JIRA(hostJira, token_auth=(API_token_jira))
-      #projects = jira.projects()
-      #print(projects)
+      global new_issue
       new_issue = jira.create_issue(project='TES', summary='New issue from jira-python',
                                     description='Look into this one', issuetype={'name': 'Task'})
       print("Jira issue - CREATED")
@@ -78,9 +78,11 @@ def foo1():
     hostJira = config_data3['hostjira']
     API_token_jira = config_data3['api_token_jira']
     jira = JIRA(hostJira , token_auth=(API_token_jira))
-    issue_key = config_data3['issue_key']
-    issue = jira.issue(issue_key)
-    jira.add_comment(issue, data['result'])
+    #issue_key = config_data3['issue_key']
+    if  new_issue:
+       issue = jira.issue(new_issue)
+       jira.add_comment(issue, data['result'])
+       print(f"Jira comment - CREATED - issue->{new_issue}")
     return "OK"
 
 
